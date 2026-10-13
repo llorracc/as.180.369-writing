@@ -1,0 +1,53 @@
+# The course environment, in one place.
+#
+# Derived from what the notebooks ACTUALLY import, measured 2026-09-02 across
+# every .ipynb in this repository:
+#
+#     numpy  matplotlib  pandas  statsmodels  fredapi  datetime
+#
+# That is the whole computational surface of the course. The total data is 20 KB
+# (materials/presidential-term-data/GOP_flag.csv). Nothing here needs a server.
+#
+# NOT included, deliberately:
+#   econ-ark        the package the SciServer container image is named for, and
+#                   which is imported in exactly zero notebooks
+#   linearmodels, seaborn, sympy, tqdm, pandas-datareader
+#                   pinned in the old binder/environment.yml, imported nowhere
+#
+# Versions are left unpinned on purpose: this is a writing course, the analysis
+# is a few dozen lines of pandas, and pinning to the day is how the old file
+# ended up demanding python=3.11.10 and a SciServer-only prefix path.
+name: as369
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+
+  # analysis -- the six imports above
+  - pandas
+  - numpy
+  - matplotlib
+  - statsmodels
+  - fredapi
+
+  # notebooks
+  - jupyterlab
+  - ipykernel
+  - nbconvert
+  # the slideshow button in JupyterLab (class 10); RISE, its namesake, is for Notebook 6 only
+  - jupyterlab_rise
+
+  # the paper: myst builds the PDF from .md + .ipynb
+  - mystmd>=1.10.1
+  # mystmd is a Node application, and conda-forge will otherwise resolve nodejs to
+  # whatever is newest -- which on 2026-09-06 was 26.8.0-ALPHA. myst refuses to run
+  # on it ("Please update your Node or NPM versions") while `myst --version` still
+  # answers, so the environment looks healthy and cannot build anything. Pin the
+  # major version. (Until 2026-10-12 this said nodejs=24.9, which cannot be
+  # installed beside texlive-core on Apple Silicon: the two need different icu.)
+  - nodejs=24
+  # LaTeX is not in this file. myst's PDF runs latexmk and xelatex, and so does
+  # Jupyter's export to PDF. Until 2026-10-12 this file carried texlive-core,
+  # which has no xelatex and never made a PDF. LaTeX is now TinyTeX, installed
+  # outside conda by materials/setup/install-latex.sh and checked by
+  # materials/setup/check-latex.sh.

@@ -1,0 +1,41 @@
+{
+  // A uniform Linux environment for this course, identical on Mac and Windows.
+  //
+  // Two ways to use it, same file:
+  //   - in the browser:  Code -> Codespaces -> Create codespace.  Nothing to install.
+  //   - on your laptop:  VS Code -> "Reopen in Container".  Needs Docker Desktop.
+  //
+  // Why this exists: it replaces the SciServer econ-ark container. The image was
+  // chosen for a package (econ-ark) that no notebook in this repository imports,
+  // and the one thing the course genuinely needs from an environment -- building
+  // the paper PDF with myst -- never worked there. See .devcontainer/environment.yml
+  // for what the course actually depends on: six imports and 20 KB of data.
+  "name": "AS.180.369",
+
+  // Miniconda base: the environment is described by a conda file, so the paper's
+  // own binder/environment.yml stays the same shape students already see.
+  "image": "mcr.microsoft.com/devcontainers/miniconda:3",
+
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "executablebookproject.myst-highlight"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/opt/conda/envs/as369/bin/python",
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+
+  // Codespaces bills to whoever CREATES the codespace, not the repository owner.
+  // On a personal repo that means each student spends their own monthly
+  // allowance. Idle machines still burn it, so stop rather than just close.
+  "hostRequirements": { "cpus": 2 },
+
+  "remoteUser": "vscode"
+}
