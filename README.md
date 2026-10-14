@@ -363,3 +363,8 @@ course grade, university probation, or suspension from university.
 
 **Please confer with your instructor immediately if you questions or uncertainty
 arise regarding issues of academic ethics.**
+
+## License
+
+The course materials in this repository are © 2026 Christopher Carroll, and are licensed
+under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](LICENSE).
