@@ -105,14 +105,15 @@ Students reach the TA by @-tagging them in a GitHub issue in the course repo.
 
 (Also, see [below](#communications) for the communications policy for this course.)
 
-### Bio
-
-> TBA
-
-
 ## Course Materials
 
-Location for all course materials & guidance for how they will be distributed.
+Everything for the course is in this repository:
+- **Each class's agenda and homework** are in [`materials/`](materials/), one folder for each phase of
+  the course. The [Schedule](#schedule) links each class to its page.
+- **What happened in each class** (its transcript and summary) is in `Classes/` (not included in this copy),
+  published after the class.
+- **Your own work** goes in your folder, `contrib/<your-github-handle>/`.
+  `contrib/README.md` (not included in this copy) says how.
 
 ## Course Description
 

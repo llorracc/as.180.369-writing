@@ -186,6 +186,10 @@ drafts: what you asked, what came back, and what you chose to do about it. A
 piece that arrives polished in one commit shows none of that, which is why the
 history counts as much as the final text.
 
+**Say what happened in each commit's message:** what you asked the AI, which
+critiques you took, and which you rejected and why. In the browser, the
+**Commit changes** box has room for it under *Extended description*.
+
 - [ ] **Completed Dennett summary — due _in class_ on Monday 14 September.**
   - Due *in* class rather than before it, because we go through the pull requests
     together in the room and sort the mechanics out once, properly. **From the
